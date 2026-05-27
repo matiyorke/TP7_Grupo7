@@ -13,5 +13,17 @@ namespace TP7_Grupo7
         {
 
         }
+
+        protected void btnSeleccionar_Command1(object sender, CommandEventArgs e)
+        {
+
+            // prueba de que anda el evento, mostramos mensaje con el id de la sucursal seleccionada
+            if (e.CommandName == "eventoSeleccionar")
+            {
+
+                lblMensaje.Text = "Sucursal seleccionada: " + e.CommandArgument.ToString();
+
+            }
+        }
     }
 }
