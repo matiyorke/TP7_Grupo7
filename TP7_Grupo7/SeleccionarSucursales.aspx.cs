@@ -14,7 +14,7 @@ namespace TP7_Grupo7
         {
 
         }
-
+        
         protected void btnSeleccionar_Command1(object sender, CommandEventArgs e)
         {
 
@@ -27,6 +27,7 @@ namespace TP7_Grupo7
 
             }
         }
+        
 
         protected void btn_Buscar_Click(object sender, EventArgs e)
         {
