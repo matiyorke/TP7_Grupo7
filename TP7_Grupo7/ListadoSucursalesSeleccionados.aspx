@@ -10,6 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
             <br />
             <br />
 &nbsp;&nbsp;&nbsp; <strong>MOSTRAR SUCURSALES SELECCIONADAS</strong><br />
