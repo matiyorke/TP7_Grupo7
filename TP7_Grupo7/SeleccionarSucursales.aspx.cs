@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -23,7 +24,37 @@ namespace TP7_Grupo7
 
                 lblMensaje.Text = "Sucursal seleccionada: " + e.CommandArgument.ToString();
 
+
             }
+        }
+
+        protected void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBox_Buscar.Text.Trim();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                // Si está vacío, mostramos todas
+                SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]";
+                SqlDataSource1.SelectParameters.Clear();
+            }
+            else
+            {
+                // Filtramos por nombre parcial o completo
+                SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal] WHERE [NombreSucursal] LIKE @Nombre";
+                SqlDataSource1.SelectParameters.Clear();
+                SqlDataSource1.SelectParameters.Add("Nombre", "%" + busqueda + "%");
+            }
+
+            lv_Sucursales.DataBind();
+        }
+
+        protected void limpiar_Click(object sender, EventArgs e)
+        {
+            txtBox_Buscar.Text = "";
+            SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]";
+            SqlDataSource1.SelectParameters.Clear();
+            lv_Sucursales.DataBind();
         }
     }
 }
