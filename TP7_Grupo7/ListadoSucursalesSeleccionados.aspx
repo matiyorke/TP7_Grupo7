@@ -33,7 +33,8 @@
                 <SortedDescendingHeaderStyle BackColor="#3E3277" />
             </asp:GridView>
             &nbsp;<br />
-&nbsp;&nbsp;&nbsp;
+&nbsp;<asp:LinkButton ID="LB_Dese" runat="server" OnClick="LinkButton1_Click">Deseleccionar todo</asp:LinkButton>
+            &nbsp;&nbsp;
             <br />
             <br />
             <br />

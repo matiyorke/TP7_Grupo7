@@ -23,7 +23,28 @@ namespace TP7_Grupo7
             {
 
                 lblMensaje.Text = "Sucursal seleccionada: " + e.CommandArgument.ToString();
+                string[] datos = e.CommandArgument.ToString().Split('|');
 
+                DataTable dt;
+                if (Session["SUCURSALES_SELECCIONADAS"] == null)
+                {
+                    dt = new DataTable();
+                    dt.Columns.Add("Id_Sucursal");
+                    dt.Columns.Add("NombreSucursal");
+                    dt.Columns.Add("DescripcionSucursal");
+                }
+                else
+                {
+                    dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
+                }
+
+                DataRow fila = dt.NewRow();
+                fila["Id_Sucursal"] = datos[0];
+                fila["NombreSucursal"] = datos[1];
+                fila["DescripcionSucursal"] = datos[2];
+                dt.Rows.Add(fila);
+
+                Session["SUCURSALES_SELECCIONADAS"] = dt;
 
             }
         }

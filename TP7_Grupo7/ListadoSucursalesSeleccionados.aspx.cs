@@ -30,5 +30,11 @@ namespace TP7_Grupo7
 
 
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["SUCURSALES_SELECCIONADAS"] = null;
+            Response.Redirect("ListadoSucursalesSeleccionados.aspx");
+        }
     }
 }
