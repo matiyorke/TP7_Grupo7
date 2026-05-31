@@ -85,6 +85,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccederDatos.cs" />
     <Compile Include="ListadoSucursalesSeleccionados.aspx.cs">
       <DependentUpon>ListadoSucursalesSeleccionados.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,6 +94,7 @@
       <DependentUpon>ListadoSucursalesSeleccionados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provincias.cs" />
     <Compile Include="SeleccionarSucursales.aspx.cs">
       <DependentUpon>SeleccionarSucursales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

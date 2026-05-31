@@ -13,6 +13,11 @@ namespace TP7_Grupo7
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if(!IsPostBack)
+            {
+                dlProvincias.DataSource = Provincias.ObtenerTodas();
+                dlProvincias.DataBind();
+            }
         }
         
         protected void btnSeleccionar_Command1(object sender, CommandEventArgs e)
@@ -37,6 +42,15 @@ namespace TP7_Grupo7
                 {
                     dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
                 }
+
+                // validamos duplicados, si ya existe la sucursal en la tabla, mostramos mensaje y no la agregamos
+                DataRow[] filaExistente = dt.Select("Id_Sucursal = '" + datos[0] + "'");
+                if (filaExistente.Length > 0)
+                {
+                    lblMensaje.Text = "La sucursal ya fue seleccionada.";
+                    return;
+                }
+
 
                 DataRow fila = dt.NewRow();
                 fila["Id_Sucursal"] = datos[0];
