@@ -36,5 +36,18 @@ namespace TP7_Grupo7
             Session["SUCURSALES_SELECCIONADAS"] = null;
             Response.Redirect("ListadoSucursalesSeleccionados.aspx");
         }
+
+        protected void gvSucursales_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            DataTable dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
+
+            // e.RowIndex te da el índice de la fila clickeada
+            dt.Rows.RemoveAt(e.RowIndex);
+
+            Session["SUCURSALES_SELECCIONADAS"] = dt;
+
+            gvSucursales.DataSource = dt;
+            gvSucursales.DataBind();
+        }
     }
 }
