@@ -12,6 +12,15 @@ namespace TP7_Grupo7
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Se mueve al IsPostBack para evitar inconsistencias al eliminar filas
+            if (!IsPostBack)
+            {
+                CargarGrilla();
+            }
+        }
+
+        private void CargarGrilla()
+        {
             if (Session["SUCURSALES_SELECCIONADAS"] != null)
             {
                 DataTable tabla = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
@@ -22,13 +31,15 @@ namespace TP7_Grupo7
                     gvSucursales.DataBind();
                     lblMensaje.Text = "Total de sucursales seleccionadas: " + tabla.Rows.Count;
                 }
+                else
+                {
+                    lblMensaje.Text = "No se han seleccionado sucursales.";
+                }
             }
             else
             {
                 lblMensaje.Text = "No se han seleccionado sucursales.";
             }
-
-
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -46,8 +57,20 @@ namespace TP7_Grupo7
 
             Session["SUCURSALES_SELECCIONADAS"] = dt;
 
-            gvSucursales.DataSource = dt;
-            gvSucursales.DataBind();
+            // Se verifica si quedan sucursales y se muestra mensaje correspondiente
+            if (dt.Rows.Count == 0)
+            {
+                lblMensaje.Text = "No se han seleccionado sucursales.";
+                Session["SUCURSALES_SELECCIONADAS"] = null;
+                gvSucursales.DataSource = null;
+                gvSucursales.DataBind();
+            }
+            else
+            {
+                gvSucursales.DataSource = dt;
+                gvSucursales.DataBind();
+                lblMensaje.Text = "Total de sucursales seleccionadas: " + dt.Rows.Count;
+            }
         }
     }
 }

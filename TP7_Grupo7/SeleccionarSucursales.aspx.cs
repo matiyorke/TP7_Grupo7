@@ -12,21 +12,18 @@ namespace TP7_Grupo7
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 dlProvincias.DataSource = Provincias.ObtenerTodas();
                 dlProvincias.DataBind();
             }
         }
-        
+
         protected void btnSeleccionar_Command1(object sender, CommandEventArgs e)
         {
-
-            // prueba de que anda el evento, mostramos mensaje con el id de la sucursal seleccionada
+            // Prueba de que anda el evento, mostramos mensaje con el id de la sucursal seleccionada
             if (e.CommandName == "eventoSeleccionar")
             {
-
                 lblMensaje.Text = "Sucursal seleccionada: " + e.CommandArgument.ToString();
                 string[] datos = e.CommandArgument.ToString().Split('|');
 
@@ -43,14 +40,13 @@ namespace TP7_Grupo7
                     dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
                 }
 
-                // validamos duplicados, si ya existe la sucursal en la tabla, mostramos mensaje y no la agregamos
+                // Validamos duplicados, si ya existe la sucursal en la tabla, mostramos mensaje y no la agregamos
                 DataRow[] filaExistente = dt.Select("Id_Sucursal = '" + datos[0] + "'");
                 if (filaExistente.Length > 0)
                 {
                     lblMensaje.Text = "La sucursal ya fue seleccionada.";
                     return;
                 }
-
 
                 DataRow fila = dt.NewRow();
                 fila["Id_Sucursal"] = datos[0];
@@ -59,10 +55,8 @@ namespace TP7_Grupo7
                 dt.Rows.Add(fila);
 
                 Session["SUCURSALES_SELECCIONADAS"] = dt;
-
             }
         }
-        
 
         protected void btn_Buscar_Click(object sender, EventArgs e)
         {
@@ -91,6 +85,19 @@ namespace TP7_Grupo7
             SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]";
             SqlDataSource1.SelectParameters.Clear();
             lv_Sucursales.DataBind();
+        }
+
+        // Filtro por provincia al hacer clic en el DataList
+        protected void dlProvincias_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName == "filtrarProvincia")
+            {
+                string idProvincia = e.CommandArgument.ToString();
+                SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal] WHERE [Id_Provincia] = @IdProvincia";
+                SqlDataSource1.SelectParameters.Clear();
+                SqlDataSource1.SelectParameters.Add("IdProvincia", idProvincia);
+                lv_Sucursales.DataBind();
+            }
         }
     }
 }
