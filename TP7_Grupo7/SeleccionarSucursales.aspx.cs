@@ -93,7 +93,7 @@ namespace TP7_Grupo7
             if (e.CommandName == "filtrarProvincia")
             {
                 string idProvincia = e.CommandArgument.ToString();
-                SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal] WHERE [Id_Provincia] = @IdProvincia";
+                SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal] WHERE [Id_ProvinciaSucursal] = @IdProvincia";
                 SqlDataSource1.SelectParameters.Clear();
                 SqlDataSource1.SelectParameters.Add("IdProvincia", idProvincia);
                 lv_Sucursales.DataBind();

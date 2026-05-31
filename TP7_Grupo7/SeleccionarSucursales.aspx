@@ -53,12 +53,12 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<table class="auto-style3">
                 <tr>
                     <td class="auto-style7">
-                        <asp:DataList ID="dlProvincias" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Both" Font-Size="X-Large" Height="652px" Width="170px">
+                        <asp:DataList ID="dlProvincias" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Both" Font-Size="X-Large" Height="652px" Width="170px" OnItemCommand="dlProvincias_ItemCommand">
                             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
                             <ItemStyle BackColor="White" ForeColor="#003399" />
                             <ItemTemplate>
-                                <asp:Button ID="btnProvincia" runat="server" Text='<%# Eval("DescripcionProvincia") %>' Height="43px" Width="225px" />
+                                <asp:Button ID="btnProvincia" runat="server" Text='<%# Eval("DescripcionProvincia") %>' Height="43px" Width="225px" CommandArgument='<%# Eval("Id_Provincia") %>' CommandName="filtrarProvincia" />
                             </ItemTemplate>
                             <SelectedItemStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
                         </asp:DataList>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 
 namespace TP7_Grupo7
@@ -11,9 +12,8 @@ namespace TP7_Grupo7
     {
         public static DataTable ObtenerTodas()
         {
-            string consulta = "SELECT DescripcionProvincia FROM Provincia";
+            string consulta = "SELECT Id_Provincia, DescripcionProvincia FROM Provincia";
             return AccederDatos.EjecutarConsulta(consulta);
         }
-
     }
 }
