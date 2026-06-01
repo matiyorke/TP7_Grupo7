@@ -17,6 +17,7 @@ namespace TP7_Grupo7
                 dlProvincias.DataSource = Provincias.ObtenerTodas();
                 dlProvincias.DataBind();
                 Pan_Detalle.Visible = false;
+                lblContadorSeleccionadas.Text = "Seleccionadas (0)";
             }
         }
 
@@ -42,7 +43,7 @@ namespace TP7_Grupo7
                 }
                 else
                 {
-                    dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
+                    dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];                    
                 }
 
                 // Validamos duplicados, si ya existe la sucursal en la tabla, mostramos mensaje y no la agregamos
@@ -75,6 +76,7 @@ namespace TP7_Grupo7
                 dt.Rows.Add(fila);
 
                 Session["SUCURSALES_SELECCIONADAS"] = dt;
+                lblContadorSeleccionadas.Text = "Seleccionadas: (" + dt.Rows.Count + ")";
             }
         }
 

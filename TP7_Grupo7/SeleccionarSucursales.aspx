@@ -24,6 +24,7 @@
                 <asp:Button ID="btn_Buscar" runat="server" Text="Buscar" CausesValidation="False" OnClick="btn_Buscar_Click" CssClass="btn-principal" />
                 <asp:Button ID="limpiar" runat="server" OnClick="limpiar_Click" Text="Limpiar" CssClass="btn-secundario" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBox_Buscar" SetFocusOnError="True" ValidationGroup="VG_Buscar" CssClass="validador">* complete el campo</asp:RequiredFieldValidator>
+                <asp:Label ID="lblContadorSeleccionadas" runat="server" CssClass="lbl-contador"></asp:Label>
             </div>
 
             <asp:Panel ID="Pan_Detalle" runat="server" CssClass="panel-detalle">

@@ -87,6 +87,15 @@ namespace TP7_Grupo7
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
+        /// Control lblContadorSeleccionadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContadorSeleccionadas;
+
+        /// <summary>
         /// Control Pan_Detalle.
         /// </summary>
         /// <remarks>
