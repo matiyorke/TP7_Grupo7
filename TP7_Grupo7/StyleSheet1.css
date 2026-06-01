@@ -312,3 +312,23 @@
     display: flex;
     justify-content: flex-end;
 }
+/* Links eliminar del gridview */
+.gridview-listado a {
+    color: #7a2042;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+    .gridview-listado a:hover {
+        color: #c97a96;
+    }
+
+/* Headers con sorting del gridview */
+.gridview-listado th a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+    .gridview-listado th a:hover {
+        color: #f5c6d5;
+    }
