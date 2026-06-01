@@ -72,5 +72,16 @@ namespace TP7_Grupo7
                 lblMensaje.Text = "Total de sucursales seleccionadas: " + dt.Rows.Count;
             }
         }
+
+        protected void gvSucursales_Sorting(object sender, GridViewSortEventArgs e) 
+        {
+            DataTable dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
+            if (dt != null)
+            {
+                dt.DefaultView.Sort = e.SortExpression;
+                gvSucursales.DataSource = dt;
+                gvSucursales.DataBind();
+            }
+        }
     }
 }
