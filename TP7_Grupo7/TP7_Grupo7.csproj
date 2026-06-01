@@ -82,6 +82,7 @@
     <Content Include="Imagenes\9.jpg" />
     <Content Include="ListadoSucursalesSeleccionados.aspx" />
     <Content Include="SeleccionarSucursales.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
