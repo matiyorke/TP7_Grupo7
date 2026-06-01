@@ -23,6 +23,8 @@
                     <asp:BoundField DataField="Id_Sucursal" HeaderText="ID Sucursal" />
                     <asp:BoundField DataField="NombreSucursal" HeaderText="Nombre" />
                     <asp:BoundField DataField="DescripcionSucursal" HeaderText="Descripcion" />
+                    <asp:BoundField DataField="DireccionSucursal" HeaderText="Ubicación" />
+                    <asp:BoundField DataField="DescripcionHorario" HeaderText="Horarios" />
                 </Columns>
                 <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />

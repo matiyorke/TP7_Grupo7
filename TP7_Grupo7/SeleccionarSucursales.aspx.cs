@@ -35,6 +35,10 @@ namespace TP7_Grupo7
                     dt.Columns.Add("Id_Sucursal");
                     dt.Columns.Add("NombreSucursal");
                     dt.Columns.Add("DescripcionSucursal");
+                    // Se agregan columnas de direccion 
+                    dt.Columns.Add("DireccionSucursal");
+                    // Agregamos tambien la columnas de horario que faltaban
+                    dt.Columns.Add("DescripcionHorario");
                 }
                 else
                 {
@@ -49,10 +53,25 @@ namespace TP7_Grupo7
                     return;
                 }
 
+                DataTable detalles = AccederDatos.EjecutarConsulta(
+                    "SELECT DireccionSucursal, DescripcionHorario " +
+                    "FROM Sucursal " +
+                    "LEFT JOIN Horario ON Id_HorarioSucursal = Id_Horario " +
+                    "WHERE Id_Sucursal = " + datos[0]);
+
+                string direccion = detalles.Rows.Count > 0 && detalles.Rows[0]["DireccionSucursal"] != DBNull.Value
+                    ? detalles.Rows[0]["DireccionSucursal"].ToString() : "";
+                string horario = detalles.Rows.Count > 0 && detalles.Rows[0]["DescripcionHorario"] != DBNull.Value
+                    ? detalles.Rows[0]["DescripcionHorario"].ToString() : "Sin horario asignado";
+
                 DataRow fila = dt.NewRow();
                 fila["Id_Sucursal"] = datos[0];
                 fila["NombreSucursal"] = datos[1];
                 fila["DescripcionSucursal"] = datos[2];
+                // Guardamos la direccion 
+                fila["DireccionSucursal"] = direccion;
+                // Guardamos el horario
+                fila["DescripcionHorario"] = horario;
                 dt.Rows.Add(fila);
 
                 Session["SUCURSALES_SELECCIONADAS"] = dt;
