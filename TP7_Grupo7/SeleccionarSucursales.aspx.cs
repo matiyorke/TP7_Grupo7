@@ -16,6 +16,7 @@ namespace TP7_Grupo7
             {
                 dlProvincias.DataSource = Provincias.ObtenerTodas();
                 dlProvincias.DataBind();
+                Pan_Detalle.Visible = false;
             }
         }
 
@@ -98,6 +99,28 @@ namespace TP7_Grupo7
                 SqlDataSource1.SelectParameters.Add("IdProvincia", idProvincia);
                 lv_Sucursales.DataBind();
             }
+        }
+
+        protected void Button1_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName == "Detalles")
+            {
+               DataTable detalles = AccederDatos.EjecutarConsulta("SELECT NombreSucursal, DireccionSucursal, DescripcionHorario FROM Sucursal INNER JOIN Horario ON Id_HorarioSucursal = Id_Horario WHERE Id_Sucursal = " + e.CommandArgument.ToString());
+                
+                lbl_Suc_de.Text= "Sucursal: " + detalles.Rows[0]["NombreSucursal"].ToString();
+                Lbl_direccion_de.Text= "Dirección: " + detalles.Rows[0]["DireccionSucursal"].ToString();
+                Lbl_Horario_De.Text= "Horario: " + detalles.Rows[0]["DescripcionHorario"].ToString();
+                Pan_Detalle.Visible = true;
+                
+
+            }
+
+           
+        }
+
+        protected void pan_butt_ocu_Click(object sender, EventArgs e)
+        {
+            Pan_Detalle.Visible= false;
         }
     }
 }
