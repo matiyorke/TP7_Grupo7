@@ -64,6 +64,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<table class="auto-style3">
                 <tr>
                     <td class="auto-style7">
+                        <%--[NUEVO] Label que muestra la provincia actualmente seleccionada--%>
+                        <asp:Label ID="lblProvinciaSeleccionada" runat="server" Font-Bold="True" ForeColor="#003399" Text="Mostrando: Todas las sucursales"></asp:Label>
+                        <br />
                         <asp:DataList ID="dlProvincias" runat="server" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" GridLines="Both" Font-Size="X-Large" Height="652px" Width="170px" OnItemCommand="dlProvincias_ItemCommand">
                             <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
                             <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />

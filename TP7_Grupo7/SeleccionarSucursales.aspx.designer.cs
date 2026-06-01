@@ -141,6 +141,15 @@ namespace TP7_Grupo7
         protected global::System.Web.UI.WebControls.Button pan_butt_ocu;
 
         /// <summary>
+        /// Control lblProvinciaSeleccionada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProvinciaSeleccionada;
+
+        /// <summary>
         /// Control dlProvincias.
         /// </summary>
         /// <remarks>

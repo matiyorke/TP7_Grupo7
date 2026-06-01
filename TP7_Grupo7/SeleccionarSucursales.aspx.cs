@@ -86,6 +86,8 @@ namespace TP7_Grupo7
             SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal]";
             SqlDataSource1.SelectParameters.Clear();
             lv_Sucursales.DataBind();
+            // Resetea el label de provincia al limpiar
+            lblProvinciaSeleccionada.Text = "Mostrando: Todas las sucursales";
         }
 
         // Filtro por provincia al hacer clic en el DataList
@@ -94,6 +96,8 @@ namespace TP7_Grupo7
             if (e.CommandName == "filtrarProvincia")
             {
                 string idProvincia = e.CommandArgument.ToString();
+                // Muestra la provincia seleccionada actualmente
+                lblProvinciaSeleccionada.Text = "Mostrando: " + ((Button)e.Item.FindControl("btnProvincia")).Text;
                 SqlDataSource1.SelectCommand = "SELECT [DescripcionSucursal], [NombreSucursal], [URL_Imagen_Sucursal], [Id_Sucursal] FROM [Sucursal] WHERE [Id_ProvinciaSucursal] = @IdProvincia";
                 SqlDataSource1.SelectParameters.Clear();
                 SqlDataSource1.SelectParameters.Add("IdProvincia", idProvincia);
@@ -103,24 +107,20 @@ namespace TP7_Grupo7
 
         protected void Button1_Command(object sender, CommandEventArgs e)
         {
-            if(e.CommandName == "Detalles")
+            if (e.CommandName == "Detalles")
             {
-               DataTable detalles = AccederDatos.EjecutarConsulta("SELECT NombreSucursal, DireccionSucursal, DescripcionHorario FROM Sucursal INNER JOIN Horario ON Id_HorarioSucursal = Id_Horario WHERE Id_Sucursal = " + e.CommandArgument.ToString());
-                
-                lbl_Suc_de.Text= "Sucursal: " + detalles.Rows[0]["NombreSucursal"].ToString();
-                Lbl_direccion_de.Text= "Dirección: " + detalles.Rows[0]["DireccionSucursal"].ToString();
-                Lbl_Horario_De.Text= "Horario: " + detalles.Rows[0]["DescripcionHorario"].ToString();
+                DataTable detalles = AccederDatos.EjecutarConsulta("SELECT NombreSucursal, DireccionSucursal, DescripcionHorario FROM Sucursal INNER JOIN Horario ON Id_HorarioSucursal = Id_Horario WHERE Id_Sucursal = " + e.CommandArgument.ToString());
+
+                lbl_Suc_de.Text = "Sucursal: " + detalles.Rows[0]["NombreSucursal"].ToString();
+                Lbl_direccion_de.Text = "Dirección: " + detalles.Rows[0]["DireccionSucursal"].ToString();
+                Lbl_Horario_De.Text = "Horario: " + detalles.Rows[0]["DescripcionHorario"].ToString();
                 Pan_Detalle.Visible = true;
-                
-
             }
-
-           
         }
 
         protected void pan_butt_ocu_Click(object sender, EventArgs e)
         {
-            Pan_Detalle.Visible= false;
+            Pan_Detalle.Visible = false;
         }
     }
 }
