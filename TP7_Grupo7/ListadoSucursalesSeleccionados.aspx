@@ -22,6 +22,8 @@
                 <asp:Label ID="lblBuscar" runat="server" Text="Buscar por nombre: " CssClass="lbl-campo"></asp:Label>
                 <asp:TextBox ID="txtBuscar" runat="server" CssClass="input-campo" Width="250px"></asp:TextBox>
                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" CausesValidation="False" CssClass="btn-principal" />
+            &nbsp;&nbsp;
+                <asp:Button ID="btnOrdenar" runat="server" Text="Ordenar A-Z" OnClick="btnOrdenar_Click" CausesValidation="False" CssClass="btn-principal" />
             </div>
 
             <asp:Label ID="lblMensaje" runat="server" CssClass="lbl-mensaje"></asp:Label>

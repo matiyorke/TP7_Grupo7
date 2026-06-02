@@ -119,5 +119,17 @@ namespace TP7_Grupo7
                 lblMensaje.Text = "Resultados para: " + busqueda + " (" + filtrada.Rows.Count + " resultado/s)";
             }
         }
+
+        protected void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            if (Session["SUCURSALES_SELECCIONADAS"] != null)
+            {
+                DataTable dt = (DataTable)Session["SUCURSALES_SELECCIONADAS"];
+                DataView vista = dt.DefaultView;   //es similar a una "vista" en SQL (un modo de mostrar la tabla)
+                vista.Sort = "NombreSucursal ASC"; //ordena alfabéticamente de forma ascendente con el "ASC".
+                gvSucursales.DataSource = vista;   //el gv se carga con la vista ya filtrada.
+                gvSucursales.DataBind();    
+            }
+        }
     }
 }
